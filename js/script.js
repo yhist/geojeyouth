@@ -100,6 +100,75 @@ $(document).ready(function(){
      $('.mb-menu>li').height(60);
      $('.mb-mainmenu').removeClass('mb-mainmenu-open');
   });
+
+  // 커뮤니티 영역 데이터 연동
+  // 이룸소식 : Array [] 로 구현
+  let infoLinkArr = ['#1', '#2', '#3', '#4'];
+  let infoTitleArr = [
+    '7월 취창업 특강 지원자 모집 ♡',
+    '6월 문화특강 [모스큐브&멘톨비누 만들기]',
+    '6월 인문학특강 [4차 산업혁명과 청년]',
+    '< 내꿈공간(내 일을 꿈꾸는 청년창업공간) 대관 안내 >'	
+  ];
+  let infoDateArr = [
+    '2022.06.27',
+    '2022.06.13',
+    '2022.06.08',
+    '2022.06.02'
+  ]; 
+  let communityList = $('.data-info');
+  let communityOutput = "";
+  for( let i = 0; i < infoLinkArr.length; i++) {
+    let temp = `
+    <li>
+    <a href="${infoLinkArr[i]}">${infoTitleArr[i]}</a>
+    <span>${infoDateArr[i]}</span>
+    </li>
+    `;
+
+    communityOutput += temp;
+  }
+  communityList.html(communityOutput)
+  
+  // 청년 새소식 : 객체 {} 로 구현
+  let newsData = [
+    {
+      link: '#1',
+      title: '2022 경남 청년 라이브커머스 아카데미 참가자 모집 공고',
+      date: '2022.06.27'
+    },
+    {
+      link: '#2',
+      title: '청춘다락, 7월 프로그램 참여자 선정 결과(예비명단 포함)',
+      date: '2022.06.23'
+    },
+    {
+      link: '#3',
+      title: '「2022년 청년, 거제에서 한 달 살아보기」 참여 청년 모집!!',
+      date: '2022.06.15'
+    },
+    {
+      link: '#4',
+      title: '2022년 거제시 청년 월세 지원사업 선정 결과',
+      date: '2022.06.08'
+    }
+  ];
+  let dataNewsDiv = $('.data-news');
+  let dataNewsOutput = '';
+  for(let i = 0; i < newsData.length; i++) {
+    // 데이터를 한개씩 가져와서 뜯는다. 
+    let data = newsData[i];
+    let temp = `
+    <li>
+    <a href="${data.link}">${data.title}</a>
+    <span>${data.date}</span>
+    </li>
+    `;
+    dataNewsOutput += temp; 
+  };
+  dataNewsDiv.html(dataNewsOutput);
+
+
 });
 
 // js 를 이용(html, css, js,멀티미디어 요소)
