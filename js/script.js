@@ -1,6 +1,29 @@
 // 모든 리소스가 준비가 되었는가?
 // jquery 를 이용(html, css, js)
 $(document).ready(function () {
+  // 안내창 기능
+  // 추가기능(스크롤바 없애기)
+  $("html").css("overflow", "hidden");
+  let modalWrap = $(".modal-wrap");
+  let modalClose = $(".modal-close");
+  modalClose.click(function () {
+    modalWrap.stop().fadeOut(200);
+    // 추가기능(스크롤바 살리기)
+    $("html").css("overflow", "auto");
+  });
+  // 배경눌렀을때 닫기
+  let modalMain = $(".modal-main");
+  // 내용배경 클릭
+  modalMain.click(function (event) {
+    // 클릭 정보 전달 막기
+    event.stopPropagation();
+  });
+  // 전체 배경 클릭
+  modalWrap.click(function (event) {
+    $(this).stop().fadeOut(200);
+    $("html").css("overflow", "auto");
+  });
+
   // 전체메뉴 보기 기능
   // .more-wrap 저장해서 활용하자.
   let more_wrap = $(".more-wrap");
